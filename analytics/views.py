@@ -1,9 +1,5 @@
-# from rest_framework.permissions import AllowAny
-from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from django.utils import timezone
-import json
 import requests
 from rest_framework import viewsets
 from .models import Campaign, Offer, Click, Lead
@@ -18,19 +14,16 @@ from .serializers import (
 class CompaignViewSet(viewsets.ModelViewSet):
     queryset = Campaign.objects.all()
     serializer_class = CampaignSerializer
-    # permission_classes = [AllowAny]
 
 
 class OfferViewSet(viewsets.ModelViewSet):
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
-    # permission_classes = [AllowAny]
 
 
 class ClickViewSet(viewsets.ModelViewSet):
     queryset = Click.objects.all()
     serializer_class = ClickSerializer
-    # permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         url = request.data.get("url", "")
@@ -88,4 +81,3 @@ class ClickViewSet(viewsets.ModelViewSet):
 class LeadViewSet(viewsets.ModelViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
-    # permission_classes = [AllowAny]
